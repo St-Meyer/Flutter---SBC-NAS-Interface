@@ -19,6 +19,7 @@ Ein Lernprojekt, um für mein NAS, welches mit Samba auf meinem Raspberry Pi Zer
  ## **🛠️ Tech Stack:**
  - Raspberry Pi Zero 2 W
  - Raspberry PI OS Lite
+ - Visual Studio Code
  - Flutter / Dart
  - FastAPI / Python
  - SQLite
