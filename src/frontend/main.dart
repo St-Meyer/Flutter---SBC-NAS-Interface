@@ -9,6 +9,6 @@ void main() async {
     print("Response code successful");
   }
   else {
-    print("Fehler");
+    print("Failure");
   }
 }

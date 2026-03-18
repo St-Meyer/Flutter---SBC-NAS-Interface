@@ -75,8 +75,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.10.7",
+  "generatorVersion": "3.11.1",
   "flutterRoot": "file:///var/home/Ghost-in-the-Shell/Development/flutter",
-  "flutterVersion": "3.38.8",
+  "flutterVersion": "3.41.4",
   "pubCache": "file:///home/Ghost-in-the-Shell/.pub-cache"
 }
