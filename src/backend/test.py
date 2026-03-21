@@ -14,4 +14,3 @@ print("FREQ: " + str(psutil.cpu_freq()))
 print("DISC USAGE: " + str(psutil.disk_usage('/')))
 
 print("TEMP: " + str(psutil.sensors_temperatures()))
-
