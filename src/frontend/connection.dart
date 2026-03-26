@@ -11,12 +11,17 @@ class Connection {
   // Methode für Verbindungsaufbau, Bool-Ausgabe ob gelungen oder nicht
   Future<bool> dial() async {
     var client = HttpClient();
-    var request = await client.getUrl(Uri.parse("http://" + ip + ":" + port));
-    var response = await request.close();
+    try {
+      var request = await client.getUrl(Uri.parse("http://" + ip + ":" + port));
+      var response = await request.close();
 
-    if (response.statusCode == HttpStatus.ok) {
-      return true;
-    } else {
+      if (response.statusCode == HttpStatus.ok) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print("Connection Error: " + e.toString());
       return false;
     }
   }
