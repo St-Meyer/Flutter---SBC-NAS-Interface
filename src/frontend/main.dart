@@ -5,4 +5,10 @@ void main() async {
   String port = "8080";
   var connection = Connection(ip, port);
   bool connectionDial = await connection.dial();
+
+  if (connectionDial) {
+    print("NAS connected");
+  } else {
+    print("Connection Failure");
+  }
 }
