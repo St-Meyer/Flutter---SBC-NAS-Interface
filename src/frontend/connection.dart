@@ -12,7 +12,8 @@ class Connection {
   Future<bool> dial() async {
     var client = HttpClient();
     try {
-      var request = await client.getUrl(Uri.parse("http://" + ip + ":" + port));
+      var request = await client
+          .getUrl(Uri.parse("http://" + ip + ":" + port + "/status"));
       var response = await request.close();
 
       if (response.statusCode == HttpStatus.ok) {

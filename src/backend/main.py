@@ -1,8 +1,13 @@
 from fastapi import FastAPI
-import psutil
+import system_info
 
 app = FastAPI()
+systemInfo = system_info.SystemInfo()
 
 @app.get("/status")
 async def status():
-    return {"CPU AUSLASTUNG:": str(psutil.cpu_percent(interval=1, percpu=True))}
+    return systemInfo.status()
+
+@app.get("/cpu_percents")
+async def cpu_percents():
+    return {"CPU AUSLASTUNG:": systemInfo.cpuPercents()}
