@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 class Connection {
@@ -24,6 +25,24 @@ class Connection {
     } catch (e) {
       print("Connection Error: " + e.toString());
       return false;
+    }
+  }
+
+  // Methode um einen API Endpunkt als String zurückzugeben
+  Future<String> apiResponse(String endpoint) async {
+    var client = HttpClient();
+    try {
+      var request = await client
+          .getUrl(Uri.parse("http://" + ip + ":" + port + endpoint));
+      var response = await request.close();
+
+      if (response.statusCode == HttpStatus.ok) {
+        return await response.transform(utf8.decoder).join();
+      } else {
+        return "Error - Connection Error";
+      }
+    } catch (e) {
+      return "Error - Wrong API Endpoint";
     }
   }
 }
