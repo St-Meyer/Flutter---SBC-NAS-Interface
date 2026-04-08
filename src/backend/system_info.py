@@ -34,7 +34,7 @@ class SystemInfo():
         return psutil.net_io_counters(pernic=True)
     
     # Actice Network Connections
-    def networkConnections(self):
+    def networkConnection(self):
         return psutil.net_connections()
     
     # System Boot Time
