@@ -44,3 +44,4 @@ class SystemInfo():
     # Running Processes
     def processes(self):
         return psutil.process_iter()
+    
