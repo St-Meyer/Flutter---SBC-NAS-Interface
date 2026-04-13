@@ -43,5 +43,10 @@ class SystemInfo():
     
     # Running Processes
     def processes(self):
-        return psutil.process_iter()
+        output = []
+        for x in psutil.process_iter():
+            if x.status() != "sleeping" and x.status() != "zombie":
+                print(x.status())
+                output.append({x.name(): x.status()})
+        return output
     
