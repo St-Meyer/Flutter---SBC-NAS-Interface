@@ -14,6 +14,4 @@ void main() async {
   } else {
     print("Connection Failure");
   }
-
-  print(await apiReader.readCpuPercents());
 }
