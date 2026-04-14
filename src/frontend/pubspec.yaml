@@ -5,4 +5,5 @@ environment:
   sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
+  flutter_dotenv: ^6.0.0
   http: ^1.1.0  # Falls du HTTP-Anfragen machst (wie in deinem Code)
