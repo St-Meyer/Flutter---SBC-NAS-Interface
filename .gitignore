@@ -1,7 +1,7 @@
 archive.txt
 project-notes.txt
-/src/frontend/.env
-/src/frontend/pubspec.lock
+/src/frontend/lib/.env
+/src/frontend/lib/pubspec.lock
 /src/frontend/.dart_tool
 /src/backend/.venv
 /src/backend/__pycache__
