@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 import 'connection.dart';
 import 'api_reader.dart';
-import 'main.dart';
 
 class LandingPage extends StatefulWidget {
-  String ip;
-  String port;
-
   LandingPage({super.key, required this.ip, required this.port});
-
-  var connection = Connection(ip, port);
-  var apiReader = ApiReader(connection);
-
+  final String ip;
+  final String port;
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
+  late Connection connection;
+  late ApiReader apiReader;
+
+  // Wird erstellt, wenn das Widget das 1. Mal erstellt wird.
+  // Initialisiert connection und apiReader
+  @override
+  void initState() {
+    super.initState();
+    connection = Connection(widget.ip, widget.port);
+    apiReader = ApiReader(connection);
+  }
+
+  // Baut Frontend Oberfläche
   @override
   Widget build(BuildContext context) {
     const String appTitle = "SBC-NAS Interface";
