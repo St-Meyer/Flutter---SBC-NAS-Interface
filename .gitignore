@@ -1,6 +1,6 @@
 archive.txt
 project-notes.txt
-/src/frontend/lib/.env
+/src/frontend/.env
 /src/frontend/lib/pubspec.lock
 /src/frontend/.dart_tool
 /src/backend/.venv

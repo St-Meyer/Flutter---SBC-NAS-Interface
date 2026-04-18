@@ -27,10 +27,12 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     const String appTitle = "SBC-NAS Interface";
-    return Scaffold(
-      appBar: AppBar(title: const Text(appTitle)),
-      body: const Center(
-        child: Text("Hello World"),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text(appTitle)),
+        body: const Center(
+          child: Text("Hello World"),
+        ),
       ),
     );
   }
