@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:source_span/src/colors.dart';
 import 'connection.dart';
 import 'api_reader.dart';
 
@@ -29,7 +31,14 @@ class _LandingPageState extends State<LandingPage> {
     const String appTitle = "SBC-NAS Interface";
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text(appTitle)),
+        appBar: AppBar(
+          title: Text(appTitle),
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.deepPurpleAccent,
+              fontSize: 24),
+        ),
         body: const Center(
           child: Text("Hello World"),
         ),
