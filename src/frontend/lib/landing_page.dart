@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:path/path.dart';
 import 'package:source_span/src/colors.dart';
 import 'connection.dart';
@@ -32,11 +33,22 @@ class _LandingPageState extends State<LandingPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: AlignmentGeometry.topCenter,
+                    end: AlignmentGeometry.bottomCenter,
+                    colors: [
+                  const Color.fromARGB(255, 47, 47, 47),
+                  Colors.white
+                ])),
+          ),
           title: Text(appTitle),
           centerTitle: true,
           titleTextStyle: TextStyle(
+              shadows: [Shadow(color: Colors.black, blurRadius: 4.0)],
               fontWeight: FontWeight.bold,
-              color: Colors.deepPurpleAccent,
+              color: const Color.fromARGB(255, 255, 255, 255),
               fontSize: 24),
         ),
         body: const Center(
