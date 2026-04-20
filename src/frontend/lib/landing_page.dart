@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:path/path.dart';
-import 'package:source_span/src/colors.dart';
 import 'connection.dart';
 import 'api_reader.dart';
 
