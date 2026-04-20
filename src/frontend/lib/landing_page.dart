@@ -13,6 +13,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   late Connection connection;
   late ApiReader apiReader;
+  late double actualDiskUsage;
 
   // Wird erstellt, wenn das Widget das 1. Mal erstellt wird.
   // Initialisiert connection und apiReader
