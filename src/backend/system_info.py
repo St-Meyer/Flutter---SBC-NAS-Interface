@@ -23,7 +23,7 @@ class SystemInfo():
     
     # SSD Usage
     def diskUsage(self):
-        return psutil.disk_usage('/')
+        return psutil.disk_usage('/home')
     
     # SSD-I/O
     def ssdIO(self):
