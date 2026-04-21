@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'connection.dart';
 import 'api_reader.dart';
@@ -13,7 +15,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   late Connection connection;
   late ApiReader apiReader;
-  late double actualDiskUsage;
+  double actualDiskUsage = 0.0;
 
   // Wird erstellt, wenn das Widget das 1. Mal erstellt wird.
   // Initialisiert connection und apiReader
@@ -24,7 +26,18 @@ class _LandingPageState extends State<LandingPage> {
     apiReader = ApiReader(connection);
   }
 
-  // Baut Frontend Oberfläche
+  void fetchDiskUsage() async {
+    var value = await apiReader.readDiskUsage();
+    Map decodedValue = jsonDecode(value);
+    List listDiskUsage = decodedValue["disk_usage"];
+    double diskPercent = listDiskUsage[3];
+
+    setState(() {
+      actualDiskUsage = diskPercent / 100;
+    });
+  }
+
+// Baut Frontend Oberfläche
   @override
   Widget build(BuildContext context) {
     const String appTitle = "SBC-NAS Interface";
