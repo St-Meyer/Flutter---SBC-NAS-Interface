@@ -42,6 +42,7 @@ class SystemInfo():
         return psutil.boot_time()
     
     # Running Processes
+    # Filtert inaktive Prozesse heraus
     def processes(self):
         output = []
         for x in psutil.process_iter():

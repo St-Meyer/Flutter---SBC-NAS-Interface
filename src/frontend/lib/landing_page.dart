@@ -16,6 +16,8 @@ class _LandingPageState extends State<LandingPage> {
   late Connection connection;
   late ApiReader apiReader;
   double actualDiskUsage = 0.0;
+  int completeDiskSpace = 0;
+  int usedDiskSpace = 0;
 
   // Wird erstellt, wenn das Widget das 1. Mal erstellt wird.
   // Initialisiert connection und apiReader
@@ -32,9 +34,13 @@ class _LandingPageState extends State<LandingPage> {
     Map decodedValue = jsonDecode(value);
     List listDiskUsage = decodedValue["disk_usage"];
     double diskPercent = listDiskUsage[3];
+    int fetchedCompleteDiskSpace = listDiskUsage[0];
+    int fetchedUsedDiskSpace = listDiskUsage[1];
 
     setState(() {
       actualDiskUsage = diskPercent / 100;
+      completeDiskSpace = fetchedCompleteDiskSpace;
+      usedDiskSpace = fetchedUsedDiskSpace;
     });
   }
 
@@ -68,6 +74,9 @@ class _LandingPageState extends State<LandingPage> {
             children: <Widget>[
               const Text("Speicherbelegung"),
               LinearProgressIndicator(value: actualDiskUsage),
+              Text((actualDiskUsage * 100).toString() + "%"),
+              Text(
+                  usedDiskSpace.toString() + "/" + completeDiskSpace.toString())
             ],
           ),
         ),
