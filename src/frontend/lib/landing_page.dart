@@ -24,6 +24,7 @@ class _LandingPageState extends State<LandingPage> {
     super.initState();
     connection = Connection(widget.ip, widget.port);
     apiReader = ApiReader(connection);
+    fetchDiskUsage();
   }
 
   void fetchDiskUsage() async {
@@ -62,8 +63,13 @@ class _LandingPageState extends State<LandingPage> {
               color: const Color.fromARGB(255, 255, 255, 255),
               fontSize: 24),
         ),
-        body: const Center(
-          child: Text("Hello World"),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              const Text("Speicherbelegung"),
+              LinearProgressIndicator(value: actualDiskUsage),
+            ],
+          ),
         ),
       ),
     );
