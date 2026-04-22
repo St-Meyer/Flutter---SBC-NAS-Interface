@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'byte_container.dart';
 import 'connection.dart';
 import 'api_reader.dart';
+import 'value_calculation.dart';
 
 class LandingPage extends StatefulWidget {
   LandingPage({super.key, required this.ip, required this.port});
@@ -18,6 +20,10 @@ class _LandingPageState extends State<LandingPage> {
   double actualDiskUsage = 0.0;
   int completeDiskSpace = 0;
   int usedDiskSpace = 0;
+  String completeDiskSpaceName = "";
+  double completeDiskSpaceValue = 0.0;
+  String usedDiskSpaceName = "";
+  double usedDiskSpaceValue = 0.0;
 
   // Wird erstellt, wenn das Widget das 1. Mal erstellt wird.
   // Initialisiert connection und apiReader
@@ -36,11 +42,17 @@ class _LandingPageState extends State<LandingPage> {
     double diskPercent = listDiskUsage[3];
     int fetchedCompleteDiskSpace = listDiskUsage[0];
     int fetchedUsedDiskSpace = listDiskUsage[1];
+    ByteContainer comDiskSpaceValue =
+        ValueCalculation().convertBytes(fetchedCompleteDiskSpace);
+    ByteContainer usDiskSpaceValue =
+        ValueCalculation().convertBytes(fetchedUsedDiskSpace);
 
     setState(() {
       actualDiskUsage = diskPercent / 100;
-      completeDiskSpace = fetchedCompleteDiskSpace;
-      usedDiskSpace = fetchedUsedDiskSpace;
+      completeDiskSpaceValue = comDiskSpaceValue.value;
+      completeDiskSpaceName = comDiskSpaceValue.byteName;
+      usedDiskSpaceValue = usDiskSpaceValue.value;
+      usedDiskSpaceName = usDiskSpaceValue.byteName;
     });
   }
 
@@ -75,8 +87,13 @@ class _LandingPageState extends State<LandingPage> {
               const Text("Speicherbelegung"),
               LinearProgressIndicator(value: actualDiskUsage),
               Text((actualDiskUsage * 100).toString() + "%"),
-              Text(
-                  usedDiskSpace.toString() + "/" + completeDiskSpace.toString())
+              Text(usedDiskSpaceValue.toStringAsFixed(2) +
+                  " " +
+                  usedDiskSpaceName +
+                  " / " +
+                  completeDiskSpaceValue.toStringAsFixed(2) +
+                  " " +
+                  completeDiskSpaceName)
             ],
           ),
         ),
