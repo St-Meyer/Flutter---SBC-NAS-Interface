@@ -8,7 +8,7 @@ import 'api_reader.dart';
 import 'value_calculation.dart';
 
 class LandingPage extends StatefulWidget {
-  LandingPage({super.key, required this.ip, required this.port});
+  const LandingPage({super.key, required this.ip, required this.port});
   final String ip;
   final String port;
   @override
@@ -85,40 +85,33 @@ class _LandingPageState extends State<LandingPage> {
               fontSize: 24),
         ),
         body: Center(
-          child: Column(
-          children: [Container(
+          child: Column(children: [
+            Container(
               child: Card(
-            color: Color.fromARGB(126, 163, 163, 163),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const Text("Speicherbelegung"),
-                LinearProgressIndicator(value: actualDiskUsage),
-                Text((actualDiskUsage * 100).toString() + "%"),
-                Text(usedDiskSpaceValue.toStringAsFixed(2) +
-                    " " +
-                    usedDiskSpaceName +
-                    " / " +
-                    completeDiskSpaceValue.toStringAsFixed(2) +
-                    " " +
-                    completeDiskSpaceName)
-              ],
-            ),
+                color: Color.fromARGB(126, 163, 163, 163),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const Text("Speicherbelegung"),
+                    LinearProgressIndicator(value: actualDiskUsage),
+                    Text("${actualDiskUsage * 100}%"),
+                    Text(
+                        "${usedDiskSpaceValue.toStringAsFixed(2)} $usedDiskSpaceName / ${completeDiskSpaceValue.toStringAsFixed(2)} $completeDiskSpaceName")
+                  ],
+                ),
               ),
-          ),
-          Container(
-            child: Card(
-              color: Color.fromARGB(126, 163, 163, 163),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const Text("CPU-Belastung")
-                  RadialGauge
-                ],
-
-              )
             ),
-          )]),
+            Container(
+              child: Card(
+                  color: Color.fromARGB(126, 163, 163, 163),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text("CPU-Belastung"),
+                    ],
+                  )),
+            )
+          ]),
         ),
       ),
     );

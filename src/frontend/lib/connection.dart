@@ -13,8 +13,7 @@ class Connection {
   Future<bool> dial() async {
     var client = HttpClient();
     try {
-      var request = await client
-          .getUrl(Uri.parse("http://" + ip + ":" + port + "/status"));
+      var request = await client.getUrl(Uri.parse("http://$ip:$port/status"));
       var response = await request.close();
 
       if (response.statusCode == HttpStatus.ok) {
@@ -23,7 +22,7 @@ class Connection {
         return false;
       }
     } catch (e) {
-      print("Connection Error: " + e.toString());
+      print("Connection Error: $e");
       return false;
     }
   }
@@ -32,8 +31,7 @@ class Connection {
   Future<String> apiResponse(String endpoint) async {
     var client = HttpClient();
     try {
-      var request = await client
-          .getUrl(Uri.parse("http://" + ip + ":" + port + endpoint));
+      var request = await client.getUrl(Uri.parse("http://$ip:$port$endpoint"));
       var response = await request.close();
 
       if (response.statusCode == HttpStatus.ok) {
