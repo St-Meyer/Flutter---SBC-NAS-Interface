@@ -2,10 +2,11 @@ name: sbc_nas_interface
 description: A Dart project for SBC-NAS Interface
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter_dotenv: ^6.0.0
+  gauge_indicator: ^0.4.3
   http: ^1.1.0  # Falls du HTTP-Anfragen machst (wie in deinem Code)
 
 flutter:

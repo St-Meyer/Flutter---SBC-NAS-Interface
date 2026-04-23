@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gauge_indicator/gauge_indicator.dart';
 import 'byte_container.dart';
 import 'connection.dart';
 import 'api_reader.dart';
@@ -35,6 +36,7 @@ class _LandingPageState extends State<LandingPage> {
     fetchDiskUsage();
   }
 
+  // API Aufruf, Festplattennutzung abzufangen.
   void fetchDiskUsage() async {
     var value = await apiReader.readDiskUsage();
     Map decodedValue = jsonDecode(value);
@@ -47,6 +49,7 @@ class _LandingPageState extends State<LandingPage> {
     ByteContainer usDiskSpaceValue =
         ValueCalculation().convertBytes(fetchedUsedDiskSpace);
 
+    // Ändert die Werte in der UI
     setState(() {
       actualDiskUsage = diskPercent / 100;
       completeDiskSpaceValue = comDiskSpaceValue.value;
@@ -83,19 +86,39 @@ class _LandingPageState extends State<LandingPage> {
         ),
         body: Center(
           child: Column(
-            children: <Widget>[
-              const Text("Speicherbelegung"),
-              LinearProgressIndicator(value: actualDiskUsage),
-              Text((actualDiskUsage * 100).toString() + "%"),
-              Text(usedDiskSpaceValue.toStringAsFixed(2) +
-                  " " +
-                  usedDiskSpaceName +
-                  " / " +
-                  completeDiskSpaceValue.toStringAsFixed(2) +
-                  " " +
-                  completeDiskSpaceName)
-            ],
+          children: [Container(
+              child: Card(
+            color: Color.fromARGB(126, 163, 163, 163),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text("Speicherbelegung"),
+                LinearProgressIndicator(value: actualDiskUsage),
+                Text((actualDiskUsage * 100).toString() + "%"),
+                Text(usedDiskSpaceValue.toStringAsFixed(2) +
+                    " " +
+                    usedDiskSpaceName +
+                    " / " +
+                    completeDiskSpaceValue.toStringAsFixed(2) +
+                    " " +
+                    completeDiskSpaceName)
+              ],
+            ),
+              ),
           ),
+          Container(
+            child: Card(
+              color: Color.fromARGB(126, 163, 163, 163),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text("CPU-Belastung")
+                  RadialGauge
+                ],
+
+              )
+            ),
+          )]),
         ),
       ),
     );

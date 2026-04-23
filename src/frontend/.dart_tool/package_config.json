@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "async",
-      "rootUri": "file:///home/Ghost-in-the-Shell/.pub-cache/hosted/pub.dev/async-2.13.0",
+      "rootUri": "file:///home/Ghost-in-the-Shell/.pub-cache/hosted/pub.dev/async-2.13.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -20,6 +20,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "equatable",
+      "rootUri": "file:///home/Ghost-in-the-Shell/.pub-cache/hosted/pub.dev/equatable-2.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///var/home/Ghost-in-the-Shell/Development/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -27,9 +33,15 @@
     },
     {
       "name": "flutter_dotenv",
-      "rootUri": "file:///home/Ghost-in-the-Shell/.pub-cache/hosted/pub.dev/flutter_dotenv-6.0.0",
+      "rootUri": "file:///home/Ghost-in-the-Shell/.pub-cache/hosted/pub.dev/flutter_dotenv-6.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "gauge_indicator",
+      "rootUri": "file:///home/Ghost-in-the-Shell/.pub-cache/hosted/pub.dev/gauge_indicator-0.4.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "http",
@@ -107,7 +119,7 @@
       "name": "sbc_nas_interface",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     }
   ],
   "generator": "pub",
