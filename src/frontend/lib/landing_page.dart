@@ -108,6 +108,7 @@ class _LandingPageState extends State<LandingPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       const Text("CPU-Belastung"),
+                      RadialGauge(value: 1, axis: GaugeAxis()),
                     ],
                   )),
             )

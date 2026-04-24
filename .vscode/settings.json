@@ -1,3 +1,5 @@
 {
-    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python"
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+    "dart.flutterSdkPath": "/var/home/Ghost-in-the-Shell/Development/flutter",
+    "dart.sdkPath": "/var/home/Ghost-in-the-Shell/Development/flutter/bin/cache/dart-sdk"
 }
