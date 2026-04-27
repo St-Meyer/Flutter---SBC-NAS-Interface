@@ -19,6 +19,7 @@ class _LandingPageState extends State<LandingPage> {
   late Connection connection;
   late ApiReader apiReader;
   double actualDiskUsage = 0.0;
+  double actualCpuPercents = 0.0;
   int completeDiskSpace = 0;
   int usedDiskSpace = 0;
   String completeDiskSpaceName = "";
@@ -38,9 +39,9 @@ class _LandingPageState extends State<LandingPage> {
 
   // API Aufruf, Festplattennutzung abzufangen.
   void fetchDiskUsage() async {
-    var value = await apiReader.readDiskUsage();
-    Map decodedValue = jsonDecode(value);
-    List listDiskUsage = decodedValue["disk_usage"];
+    var diskValue = await apiReader.readDiskUsage();
+    Map decodedDiskValue = jsonDecode(diskValue);
+    List listDiskUsage = decodedDiskValue["disk_usage"];
     double diskPercent = listDiskUsage[3];
     int fetchedCompleteDiskSpace = listDiskUsage[0];
     int fetchedUsedDiskSpace = listDiskUsage[1];
@@ -49,6 +50,8 @@ class _LandingPageState extends State<LandingPage> {
     ByteContainer usDiskSpaceValue =
         ValueCalculation().convertBytes(fetchedUsedDiskSpace);
 
+  
+
     // Ändert die Werte in der UI
     setState(() {
       actualDiskUsage = diskPercent / 100;
@@ -56,6 +59,21 @@ class _LandingPageState extends State<LandingPage> {
       completeDiskSpaceName = comDiskSpaceValue.byteName;
       usedDiskSpaceValue = usDiskSpaceValue.value;
       usedDiskSpaceName = usDiskSpaceValue.byteName;
+    });
+  }
+
+  // API Aufruf, CPU Belastung in Prozenten abzufangen.
+  void fetchCpuPercents() async {
+    var cpuValue = await apiReader.readCpuPercents();
+    Map decodedCpuValue = jsonDecode(cpuValue);
+    List listCpuUsage = decodedCpuValue["cpu_percents"];
+    double temp = 0;
+    for (int i = 0; i < listCpuUsage.length; i++) {
+      temp += listCpuUsage[i];
+    }
+
+    setState(() {
+      actualCpuPercents = temp / listCpuUsage.length;
     });
   }
 
@@ -113,7 +131,7 @@ class _LandingPageState extends State<LandingPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               const Text("CPU-Belastung"),
-                              RadialGauge(value: 1, axis: GaugeAxis()),
+                              RadialGauge(value: actualCpuPercents, axis: GaugeAxis()),
                             ],
                           )
                         ),
