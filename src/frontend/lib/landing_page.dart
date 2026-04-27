@@ -86,7 +86,7 @@ class _LandingPageState extends State<LandingPage> {
         ),
         body: Center(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
               children:<Widget>[
                 Card(
                   color: Color.fromARGB(126, 163, 163, 163),
@@ -101,26 +101,38 @@ class _LandingPageState extends State<LandingPage> {
                       ],
                     ),
                   ),
-              Card(
-                  color: Color.fromARGB(126, 163, 163, 163),
+                Container(
+                  width: double.infinity,
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      const Text("CPU-Belastung"),
-                      RadialGauge(value: 1, axis: GaugeAxis()),
-                    ],
-                  )
+                      Expanded(
+                        child: Card(
+                          color: Color.fromARGB(126, 163, 163, 163),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              const Text("CPU-Belastung"),
+                              RadialGauge(value: 1, axis: GaugeAxis()),
+                            ],
+                          )
+                        ),
+                      ),
+                      Expanded(
+                        child:Card(
+                          color: Color.fromARGB(126, 163, 163, 163),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              const Text("RAM-Belastung"),
+                              RadialGauge(value: 1, axis: GaugeAxis())
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]
                   ),
-              Card(
-                color: Color.fromARGB(126, 163, 163, 163),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const Text("RAM-Belastung"),
-                    RadialGauge(value: 1, axis: GaugeAxis())
-                  ],
                 ),
-              ),
               ] 
             ),
         ),
