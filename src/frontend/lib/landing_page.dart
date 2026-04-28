@@ -92,7 +92,9 @@ class _LandingPageState extends State<LandingPage> {
                     colors: [
                   const Color.fromARGB(255, 47, 47, 47),
                   Colors.white
-                ])),
+                  ]
+                )
+            ),
           ),
           title: Text(appTitle),
           centerTitle: true,
@@ -119,7 +121,7 @@ class _LandingPageState extends State<LandingPage> {
                       ],
                     ),
                   ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
