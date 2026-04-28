@@ -134,6 +134,7 @@ class _LandingPageState extends State<LandingPage> {
                             children: <Widget>[
                               const Text("CPU-Belastung"),
                               RadialGauge(value: actualCpuPercents, axis: GaugeAxis()),
+                              Text("${actualCpuPercents.toStringAsFixed(2)}% / 100%")
                             ],
                           )
                         ),
