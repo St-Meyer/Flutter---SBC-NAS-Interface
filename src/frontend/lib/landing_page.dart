@@ -20,6 +20,7 @@ class _LandingPageState extends State<LandingPage> {
   late ApiReader apiReader;
   double actualDiskUsage = 0.0;
   double actualCpuPercents = 0.0;
+  double actualRamPercents = 0.0;
   int completeDiskSpace = 0;
   int usedDiskSpace = 0;
   String completeDiskSpaceName = "";
@@ -39,6 +40,7 @@ class _LandingPageState extends State<LandingPage> {
     });
     Timer.periodic(Duration(seconds: 5), (timer) {
       fetchCpuPercents();
+      fetchRamUsage();
     });
   }
 
@@ -79,6 +81,17 @@ class _LandingPageState extends State<LandingPage> {
 
     setState(() {
       actualCpuPercents = temp / listCpuUsage.length;
+    });
+  }
+
+  void fetchRamUsage() async {
+    var ramValue = await apiReader.readRamUsage();
+    Map decodedRamValue = jsonDecode(ramValue);
+    List listRamUsage = decodedRamValue["ram_usage"];
+    double fetchedRamPercents = listRamUsage[2];
+
+    setState(() {
+      actualRamPercents = fetchedRamPercents;
     });
   }
 
@@ -151,7 +164,8 @@ class _LandingPageState extends State<LandingPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               const Text("RAM-Belastung"),
-                              RadialGauge(value: 1, axis: GaugeAxis())
+                              RadialGauge(value: actualRamPercents, axis: GaugeAxis()),
+                              Text("${(actualRamPercents.toStringAsFixed(2))}%")
                             ],
                           ),
                         ),
