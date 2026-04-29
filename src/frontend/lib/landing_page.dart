@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
 import 'byte_container.dart';
@@ -34,7 +34,12 @@ class _LandingPageState extends State<LandingPage> {
     super.initState();
     connection = Connection(widget.ip, widget.port);
     apiReader = ApiReader(connection);
-    fetchDiskUsage();
+    Timer.periodic(Duration(minutes: 1), (timer) {
+      fetchDiskUsage();
+    });
+    Timer.periodic(Duration(seconds: 5), (timer) {
+      fetchCpuPercents();
+    });
   }
 
   // API Aufruf, Festplattennutzung abzufangen.
@@ -134,7 +139,7 @@ class _LandingPageState extends State<LandingPage> {
                             children: <Widget>[
                               const Text("CPU-Belastung"),
                               RadialGauge(value: actualCpuPercents, axis: GaugeAxis()),
-                              Text("${actualCpuPercents.toStringAsFixed(2)}% / 100%")
+                              Text("${actualCpuPercents.toStringAsFixed(2)}%")
                             ],
                           )
                         ),
