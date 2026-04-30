@@ -5,7 +5,7 @@ class RadialGaugeWidget extends StatelessWidget{
 
   final double value;
 
-  RadialGaugeWidget({super.key, required this.value});
+  const RadialGaugeWidget({super.key, required this.value});
 
   @override
   Widget build(BuildContext context) {

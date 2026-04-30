@@ -62,7 +62,7 @@ class _LandingPageState extends State<LandingPage> {
 
     // Ändert die Werte in der UI
     setState(() {
-      actualDiskUsage = diskPercent / 100;
+      actualDiskUsage = diskPercent;
       completeDiskSpaceValue = comDiskSpaceValue.value;
       completeDiskSpaceName = comDiskSpaceValue.byteName;
       usedDiskSpaceValue = usDiskSpaceValue.value;
@@ -134,8 +134,8 @@ class _LandingPageState extends State<LandingPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       const Text("Speicherbelegung"),
-                      LinearProgressIndicator(value: actualDiskUsage),
-                      Text("${actualDiskUsage * 100}%"),
+                      LinearProgressIndicator(value: actualDiskUsage/100, minHeight: 20,),
+                      Text("$actualDiskUsage %"),
                       Text(
                         "${usedDiskSpaceValue.toStringAsFixed(2)} $usedDiskSpaceName / ${completeDiskSpaceValue.toStringAsFixed(2)} $completeDiskSpaceName")
                       ],
