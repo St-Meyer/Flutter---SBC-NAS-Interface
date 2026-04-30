@@ -21,34 +21,31 @@ class RadialGaugeWidget extends StatelessWidget{
         degrees: 180,
         style: const GaugeAxisStyle(
           thickness: 20,
-          background: Color.fromARGB(255, 175, 0, 191),
+          background: Color.fromARGB(255, 0, 0, 0),
           segmentSpacing: 4,
         ),
         pointer: GaugePointer.needle(
-          width: 2, 
-          height: 2, 
+          width: 10, 
+          height: 70, 
           color: Color.fromARGB(255, 0, 0, 0),
-        ),
-        progressBar: const GaugeProgressBar.rounded(
-          color: Color.fromARGB(255, 145, 0, 0)
         ),
         segments: [
           GaugeSegment(
             from: 0, 
             to: 33.3,
-            color: Color.fromARGB(255, 1, 2, 3),
+            color: Color.fromARGB(255, 0, 121, 36),
             cornerRadius: Radius.zero
           ),
           GaugeSegment(
             from: 33.3, 
             to: 66.6,
-            color: Color.fromARGB(255, 1, 2, 3),
+            color: Color.fromARGB(255, 159, 103, 0),
             cornerRadius: Radius.zero
           ),
           GaugeSegment(
             from: 66.6, 
             to: 100,
-            color: Color.fromARGB(255, 1, 2, 3),
+            color: Color.fromARGB(255, 132, 0, 0),
             cornerRadius: Radius.zero
           ),
         ]
