@@ -21,6 +21,7 @@ class _LandingPageState extends State<LandingPage> {
   double actualDiskUsage = 0.0;
   double actualCpuPercents = 0.0;
   double actualRamPercents = 0.0;
+  Duration actualBootTime = Duration.zero;
   int completeDiskSpace = 0;
   int usedDiskSpace = 0;
   String completeDiskSpaceName = "";
@@ -38,8 +39,10 @@ class _LandingPageState extends State<LandingPage> {
     fetchDiskUsage();
     fetchCpuPercents();
     fetchRamUsage();
+    fetchBootTime();
     Timer.periodic(Duration(minutes: 1), (timer) {
       fetchDiskUsage();
+      fetchBootTime();
     });
     Timer.periodic(Duration(seconds: 5), (timer) {
       fetchCpuPercents();
@@ -94,6 +97,16 @@ class _LandingPageState extends State<LandingPage> {
 
     setState(() {
       actualRamPercents = fetchedRamPercents;
+    });
+  }
+
+  void fetchBootTime() async {
+    var bootTimeValue = await apiReader.readBootTime();
+    Map decodedBootTimeValue = jsonDecode(bootTimeValue);
+    double fetchedBootTime = decodedBootTimeValue["boottime"];
+
+    setState(() {
+      actualBootTime = DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(fetchedBootTime.toInt() * 1000));
     });
   }
 
@@ -174,6 +187,16 @@ class _LandingPageState extends State<LandingPage> {
                       ),
                     ]
                   ),
+                ),
+                Card(
+                  color: Color.fromARGB(126, 163, 163, 163),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text("Betriebszeit"),
+                      Text("${actualBootTime.inHours}h ${actualBootTime.inMinutes % 60}min")
+                    ]
+                  )
                 ),
               ] 
             ),
