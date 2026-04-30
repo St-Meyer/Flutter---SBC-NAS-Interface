@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:gauge_indicator/gauge_indicator.dart';
 import 'byte_container.dart';
 import 'connection.dart';
 import 'api_reader.dart';
 import 'value_calculation.dart';
+import 'radial_gauge.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key, required this.ip, required this.port});
@@ -151,7 +151,7 @@ class _LandingPageState extends State<LandingPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               const Text("CPU-Belastung"),
-                              RadialGauge(value: actualCpuPercents, axis: GaugeAxis()),
+                              RadialGaugeWidget(value: actualCpuPercents),
                               Text("${actualCpuPercents.toStringAsFixed(2)}%")
                             ],
                           )
@@ -164,7 +164,7 @@ class _LandingPageState extends State<LandingPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               const Text("RAM-Belastung"),
-                              RadialGauge(value: actualRamPercents, axis: GaugeAxis()),
+                              RadialGaugeWidget(value: actualRamPercents),
                               Text("${(actualRamPercents.toStringAsFixed(2))}%")
                             ],
                           ),
