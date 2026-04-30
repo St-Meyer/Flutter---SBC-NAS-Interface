@@ -188,14 +188,24 @@ class _LandingPageState extends State<LandingPage> {
                     ]
                   ),
                 ),
-                Card(
-                  color: Color.fromARGB(126, 163, 163, 163),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                SizedBox(
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      Text("Betriebszeit"),
-                      Text("${actualBootTime.inHours}h ${actualBootTime.inMinutes % 60}min")
-                    ]
+                      Expanded(
+                        child: Card(
+                          color: Color.fromARGB(126, 163, 163, 163),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text("Betriebszeit"),
+                              Text("${actualBootTime.inHours}h ${actualBootTime.inMinutes % 60}min")
+                            ]
+                          )
+                        ),
+                      )
+                    ],
                   )
                 ),
               ] 
