@@ -35,6 +35,9 @@ class _LandingPageState extends State<LandingPage> {
     super.initState();
     connection = Connection(widget.ip, widget.port);
     apiReader = ApiReader(connection);
+    fetchDiskUsage();
+    fetchCpuPercents();
+    fetchRamUsage();
     Timer.periodic(Duration(minutes: 1), (timer) {
       fetchDiskUsage();
     });
@@ -56,8 +59,6 @@ class _LandingPageState extends State<LandingPage> {
         ValueCalculation().convertBytes(fetchedCompleteDiskSpace);
     ByteContainer usDiskSpaceValue =
         ValueCalculation().convertBytes(fetchedUsedDiskSpace);
-
-  
 
     // Ändert die Werte in der UI
     setState(() {
@@ -84,6 +85,7 @@ class _LandingPageState extends State<LandingPage> {
     });
   }
 
+// API Aufruf, RAM Belastung in Prozenten abzufangen.
   void fetchRamUsage() async {
     var ramValue = await apiReader.readRamUsage();
     Map decodedRamValue = jsonDecode(ramValue);
