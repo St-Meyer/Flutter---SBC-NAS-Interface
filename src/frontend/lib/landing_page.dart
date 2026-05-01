@@ -204,7 +204,17 @@ class _LandingPageState extends State<LandingPage> {
                             ]
                           )
                         ),
-                      )
+                      ),
+                      Expanded(
+                        child: Card(
+                          color: Color.fromARGB(126, 163, 163, 163),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text("Betriebskosten"),
+                            ],
+                          ),
+                      ))
                     ],
                   )
                 ),
