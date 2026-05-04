@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'byte_container.dart';
+import 'models/byte_container.dart';
 import 'connection.dart';
 import 'api_reader.dart';
 import 'value_calculation.dart';

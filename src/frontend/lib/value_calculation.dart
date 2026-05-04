@@ -1,4 +1,4 @@
-import 'byte_container.dart';
+import 'models/byte_container.dart';
 
 class ValueCalculation {
   ByteContainer convertBytes(int input) {
