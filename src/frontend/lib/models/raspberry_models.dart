@@ -1,9 +1,9 @@
 class RaspberryModels {
-   int id;
-   String modelName;
-   String ramModel;
-   double idlePower;
-   double nasPower;
+   final int id;
+   final String modelName;
+   final String ramModel;
+   final double idlePower;
+   final double nasPower;
 
    RaspberryModels(
     this.id, 

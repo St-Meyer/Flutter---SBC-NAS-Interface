@@ -1,6 +1,6 @@
 class ByteContainer {
-  double value;
-  String byteName;
+  final double value;
+  final String byteName;
 
   ByteContainer(this.value, this.byteName);
 }
