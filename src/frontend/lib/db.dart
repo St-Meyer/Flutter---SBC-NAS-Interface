@@ -14,6 +14,14 @@ class Db {
     late Database db;
 
                 
+    String seriestable = 'CREATE TABLE IF NOT EXISTS raspberry_series('
+                            'id INTEGER Primary Key Autoincrement, '
+                            'seriesname TEXT)';
+
+    String ramtable = 'CREATE TABLE IF NOT EXISTS ram_models('
+                        'id INTEGER Primary Key Autoincrement, '
+                        'ramsize text)';
+
     String modeltable = 'CREATE TABLE IF NOT EXISTS raspberry_models('
                         'id INTEGER Primary Key Autoincrement, '
                         'series_id INTEGER, '
@@ -25,27 +33,21 @@ class Db {
                         'FOREIGN KEY (ram_id) '
                         'REFERENCES ram_models(id));';
 
-    String seriestable = 'CREATE TABLE IF NOT EXISTS raspberry_series('
-                            'id INTEGER Primary Key Autoincrement, '
-                            'seriesname TEXT)';
-
-    String ramtable = 'CREATE TABLE IN NOT EXISTS ram_models('
-                        'id INTEGER Primary Key Autoincrement, '
-                        'ramsize text)';
-
     String settingstable = 'CREATE TABLE IF NOT EXISTS settings('
                             'id INTEGER Primary Key, '
                             'ip TEXT, '
                             'port TEXT, '
                             'kwhpreis REAL, '
-                            'modelname TEXT, '
-                            'FOREIGN KEY(modelname) '
-                            'REFERENCES raspberry_models(modelname));';
-                            
-    String seeddataModel = 'INSERT INTO raspberry_models(modelname, '
-                            'ram_id, '
-                            'idlepower, '
-                            'naspower)';
+                            'model_id INTEGER, '
+                            'FOREIGN KEY(model_id) '
+                            'REFERENCES raspberry_models(id));';
+
+    String seeddataSeries = 'INSERT INTO raspberry_series('
+                            'seriesname) VALUES'
+                            '("Pi Zero 2 W"),'
+                            '("Pi 3B+"),'
+                            '("Pi 4B"),'
+                            '("Pi 5");';
 
     
     Future <Database> init() async {
@@ -55,7 +57,7 @@ class Db {
         Database database = await openDatabase(dbPath, version: 1, onCreate: (Database db, int version) async {
             await db.execute(modeltable);
             await db.execute(settingstable);
-            await db.execute(seeddataModel);
+            await db.execute(seeddataSeries);
             });
                 return database;
     }
