@@ -49,6 +49,14 @@ class Db {
                             '("Pi 4B"),'
                             '("Pi 5");';
 
+        String seeddataRam = 'INSERT INTO ram_models('
+                            'ramsize) VALUES'
+                            '("1GB"),'
+                            '("2GB"),'
+                            '("4GB"),'
+                            '("8GB"),'
+                            '("16GB");';
+
     
     Future <Database> init() async {
         String dbPath = join(
