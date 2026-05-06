@@ -12,6 +12,7 @@
         "flutter_lints",
         "gauge_indicator",
         "http",
+        "path",
         "sqflite"
       ],
       "devDependencies": [
@@ -47,6 +48,11 @@
         "sqflite_darwin",
         "sqflite_platform_interface"
       ]
+    },
+    {
+      "name": "path",
+      "version": "1.9.1",
+      "dependencies": []
     },
     {
       "name": "http",
@@ -145,11 +151,6 @@
         "clock",
         "collection"
       ]
-    },
-    {
-      "name": "path",
-      "version": "1.9.1",
-      "dependencies": []
     },
     {
       "name": "matcher",
