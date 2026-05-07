@@ -9,7 +9,7 @@ void main() async {
   String port = dotenv.env['PORT'].toString();
 
   // Datenbank-Initialisierung
-  Db().init;
+  await Db().init();
   // IP und Port werden aus .env entnommen und in LandingPage
   // als Parameter weiter gegeben
   runApp(LandingPage(ip: ip, port: port));
