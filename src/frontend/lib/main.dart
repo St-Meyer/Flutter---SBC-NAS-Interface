@@ -1,8 +1,8 @@
 import 'landing_page.dart';
+import 'settings_page.dart';
 import 'db.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -14,14 +14,20 @@ void main() async {
   await Db().init();
   // IP und Port werden aus .env entnommen und in LandingPage
   // als Parameter weiter gegeben
-  runApp(LandingPage(ip: ip, port: port));
+  if (await checkSettings() == false) {
+    runApp(LandingPage(ip: ip, port: port));
+  }
+  else {
+    runApp(SettingsPage());
+  }
+  
 }
 
 
-
+// Überprüft, ob Einstellungen in DB bereits gespeichert sind.
 Future <bool> checkSettings() async {
-  var x = await Db().db.query('settings');
-  if (x.isEmpty) {
+  var settingsCheck = await Db().db.query('settings');
+  if (settingsCheck.isEmpty) {
     return true;
   }
   else {
