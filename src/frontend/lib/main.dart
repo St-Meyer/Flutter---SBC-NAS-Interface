@@ -15,7 +15,9 @@ void main() async {
   //String ip = dotenv.env['IP_ADDRESS'].toString();
   //String port = dotenv.env['PORT'].toString();
 
-  List<Map> list = await 
+  List<Map> list = await Db().getSettings();
+  String ip = list[0]['ip'];
+  String port = list[0]['port'];
 
   // IP und Port werden aus .env entnommen und in LandingPage
   // als Parameter weiter gegeben
