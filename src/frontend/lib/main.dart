@@ -1,3 +1,5 @@
+import 'package:sqflite/sqflite.dart';
+
 import 'landing_page.dart';
 import 'settings_page.dart';
 import 'db.dart';
@@ -5,13 +7,16 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
-  String ip = dotenv.env['IP_ADDRESS'].toString();
-  String port = dotenv.env['PORT'].toString();
-
-
+  
   // Datenbank-Initialisierung
   await Db().init();
+
+  //await dotenv.load(fileName: ".env");
+  //String ip = dotenv.env['IP_ADDRESS'].toString();
+  //String port = dotenv.env['PORT'].toString();
+
+  List<Map> list = await 
+
   // IP und Port werden aus .env entnommen und in LandingPage
   // als Parameter weiter gegeben
   if (await checkSettings() == false) {
@@ -20,9 +25,7 @@ void main() async {
   else {
     runApp(SettingsPage());
   }
-  
 }
-
 
 // Überprüft, ob Einstellungen in DB bereits gespeichert sind.
 Future <bool> checkSettings() async {

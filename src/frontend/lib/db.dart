@@ -74,18 +74,24 @@ class Db {
                             '(4, 6, 3.2, 6.5);';
     
     Future <Database> init() async {
-        String dbPath = join(
-            await getDatabasesPath(),
-            "database.db");
-        Database database = await openDatabase(dbPath, version: 1, onCreate: (Database db, int version) async {
-            await db.execute(seriestable);
-            await db.execute(ramtable);
-            await db.execute(modeltable);
-            await db.execute(settingstable);
-            await db.execute(seeddataSeries);
-            await db.execute(seeddataRam);
-            await db.execute(seeddataModels);
-            });
-                return database;
+      String dbPath = join(
+        await getDatabasesPath(),
+        "database.db");
+      Database database = await openDatabase(dbPath, version: 1, onCreate: (Database db, int version) async {
+        await db.execute(seriestable);
+        await db.execute(ramtable);
+        await db.execute(modeltable);
+        await db.execute(settingstable);
+        await db.execute(seeddataSeries);
+        await db.execute(seeddataRam);
+        await db.execute(seeddataModels);
+      });
+      db = database;
+      return database;
+    }
+
+    Future <List<Map>> getSettings() async {
+      List<Map> list = await db.rawQuery('SELECT * FROM settings');
+      return list;
     }
 }
