@@ -1,9 +1,7 @@
-import 'package:sqflite/sqflite.dart';
-
 import 'landing_page.dart';
 import 'settings_page.dart';
 import 'db.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+//import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
