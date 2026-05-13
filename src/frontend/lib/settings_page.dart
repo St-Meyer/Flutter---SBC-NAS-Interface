@@ -8,6 +8,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage>{
 
+  // Controller, welche Texteingaben zwischen speichern.
   final ipController = TextEditingController();
   final portController = TextEditingController();
   final costController = TextEditingController();
@@ -56,32 +57,35 @@ class _SettingsPageState extends State<SettingsPage>{
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
-                    child: TextFormField(
-                      controller: ipController,
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Gib die IP Adresse deines Raspberrys ein.'
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
+                      child: TextFormField(
+                        controller: ipController,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: 'Gib die IP Adresse deines Raspberrys ein.'
+                        ),
                       ),
                     ),
-                    ),
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
-                    child: TextFormField(
-                      controller: portController,
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Gib den Port deines Raspberrys ein.'
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
+                      child: TextFormField(
+                        controller: portController,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: 'Gib den Port deines Raspberrys ein.'
+                        ),
                       ),
                     ),
-                    ),
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
-                    child: TextFormField(
-                      controller: costController,
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Kosten kWh in €'
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
+                      child: TextFormField(
+                        controller: costController,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: 'Kosten kWh in €'
+                        ),
                       ),
-                    ),
                     ),
                   ],
                 ),
