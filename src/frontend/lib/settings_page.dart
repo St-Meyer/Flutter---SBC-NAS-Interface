@@ -8,6 +8,15 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage>{
 
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Bereinigt den Controller, wenn das Widget verworfen wird.
+    myController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     const String settingsTitle = "Settings";
@@ -46,6 +55,7 @@ class _SettingsPageState extends State<SettingsPage>{
                     const Text("IP:", textAlign: TextAlign.left,),
                     Padding(padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
                     child: TextFormField(
+                      controller: myController,
                       decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Enter the IP Address of your Raspberry Pi.'
