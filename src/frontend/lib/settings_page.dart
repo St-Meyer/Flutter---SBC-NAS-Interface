@@ -43,7 +43,14 @@ class _SettingsPageState extends State<SettingsPage>{
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    const Text("IP:"),
+                    const Text("IP:", textAlign: TextAlign.left,),
+                    Padding(padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Enter the IP Address of your Raspberry Pi.'
+                      ),
+                    ),)
                   ],
                 ),
               )
