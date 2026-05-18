@@ -87,6 +87,15 @@ class _SettingsPageState extends State<SettingsPage>{
                         ),
                       ),
                     ),
+                    // TODO: Geräteauswahl aus Datenbank beziehen und anzeigen lassen.
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
+                      child: DropdownButton(items: items, onChanged: onChanged),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
+                      child: DropdownButton(items: items, onChanged: onChanged),
+                    )
                   ],
                 ),
               )
