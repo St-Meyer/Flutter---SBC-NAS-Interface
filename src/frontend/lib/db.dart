@@ -94,4 +94,9 @@ class Db {
       List<Map> list = await db.rawQuery('SELECT * FROM settings');
       return list;
     }
+
+    Future <List<Map>> getModels() async {
+      List<Map> list = await db.rawQuery('SELECT * FROM raspberry_models');
+      return list;
+    }
 }
