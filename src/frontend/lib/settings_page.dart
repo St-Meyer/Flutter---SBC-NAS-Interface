@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sbc_nas_interface/db.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -90,7 +91,7 @@ class _SettingsPageState extends State<SettingsPage>{
                     // TODO: Geräteauswahl aus Datenbank beziehen und anzeigen lassen.
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
-                      child: DropdownButton(items: items, onChanged: onChanged),
+                      child: DropdownButton(items: Db().getModels(), onChanged: onChanged),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
